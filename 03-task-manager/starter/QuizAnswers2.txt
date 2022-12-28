@@ -5,11 +5,11 @@
 request the URL for a task that does not exist. Assume that you’ve created a CustomAPIError class and an error handler 
 that references that class.
 
-        const getTask = asyncWrapper(async (req, res, next) => {
-            const { id: taskID } = req.params;
-            const task = await Task.findOne({ _id: taskID });
-            if (!task) {
-                return next(createCustomError(`This task id: ${taskID} is not available`, 404))
-            }
-            res.status(200).json({ task });
-            });
+const getTask = asyncWrapper(async (req, res, next) => {
+    const { id: taskID } = req.params;
+    const task = await Task.findOne({ _id: taskID });
+        if (!task) {
+         return next(createCustomError(`This task id: ${taskID} is not available`, 404))
+    }
+    res.status(200).json({ task });
+});
